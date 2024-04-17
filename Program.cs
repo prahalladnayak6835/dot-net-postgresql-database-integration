@@ -1,38 +1,27 @@
+// Import necessary namespaces
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
+// Create a new web application builder
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// Add controllers to the services collection
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
+// Get the configuration from the builder
 var configuration = builder.Configuration;
 
+// Add the UserContext to the services collection using Npgsql for PostgreSQL
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-builder.Logging.AddConfiguration(configuration.GetSection("Logging"));
-builder.Logging.AddConsole();
-builder.Logging.AddDebug();
-
+// Build the application
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
+// Map controllers to routes
 app.MapControllers();
 
+// Run the application
 app.Run();
+

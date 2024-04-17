@@ -36,3 +36,4 @@ C:\Users\praha\Downloads\dotnet-postgresql\UserCrudApi\obj\Debug\net8.0\refint\U
 C:\Users\praha\Downloads\dotnet-postgresql\UserCrudApi\obj\Debug\net8.0\UserCrudApi.pdb
 C:\Users\praha\Downloads\dotnet-postgresql\UserCrudApi\obj\Debug\net8.0\UserCrudApi.genruntimeconfig.cache
 C:\Users\praha\Downloads\dotnet-postgresql\UserCrudApi\obj\Debug\net8.0\ref\UserCrudApi.dll
+C:\Users\praha\Downloads\dotnet-postgresql\UserCrudApi\obj\Debug\net8.0\UserCrudApi.sourcelink.json

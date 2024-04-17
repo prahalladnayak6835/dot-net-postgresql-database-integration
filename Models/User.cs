@@ -3,16 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Models
 {
     // Represents a user entity in the database
-    [Table("users")] // Specifies the table name in the database
+    // Specifies the table name in the database
+    [Table("users")] 
     public class User
     {
-        [Column("id")] // Specifies the column name in the database
-        public int Id { get; set; } // Gets or sets the user ID
+        // Specifies the column name in the database
+        [Column("id")] 
+        // Gets or sets the user ID
+        public int Id { get; set; } 
+        // Specifies the column name in the database
 
-        [Column("name")] // Specifies the column name in the database
-        public string Name { get; set; } // Gets or sets the user name
+        [Column("name")] 
+        // Gets or sets the user name
+        public string Name { get; set; } 
+        // Specifies the column name in the database
 
-        [Column("email")] // Specifies the column name in the database
-        public string Email { get; set; } // Gets or sets the user email
+        [Column("email")] 
+        // Gets or sets the user email
+        public string Email { get; set; } 
     }
 }
