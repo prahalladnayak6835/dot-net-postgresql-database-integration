@@ -14,7 +14,7 @@ var configuration = builder.Configuration;
 
 // Add the UserContext to the services collection using Npgsql for PostgreSQL
 builder.Services.AddDbContext<UserContext>(options =>
-    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(configuration.GetConnectionString("DatabaseConnection")));
 
 // Build the application
 var app = builder.Build();
