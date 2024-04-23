@@ -9,6 +9,7 @@ namespace Data
         // Constructor to initialize the context with provided options
         public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
         // Represents the Users table in the database
         public DbSet<User> Users { get; set; }

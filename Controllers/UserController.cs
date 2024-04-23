@@ -12,7 +12,7 @@ using Microsoft.VisualBasic;
 namespace UserCrudApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public class UsersController : ControllerBase
     {
         private readonly UserContext _context;

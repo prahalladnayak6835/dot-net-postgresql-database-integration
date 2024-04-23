@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
@@ -8,7 +9,11 @@ namespace Models
     public class User
     {
         // Specifies the column name in the database
+        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")] 
+        [Required]
         // Gets or sets the user ID
         public int Id { get; set; } 
         // Specifies the column name in the database
@@ -21,5 +26,10 @@ namespace Models
         [Column("email")] 
         // Gets or sets the user email
         public string Email { get; set; } 
+
+        [Column("gender")] 
+        // Gets or sets the user gender 
+        public string Gender { get; set; } 
+
     }
 }
