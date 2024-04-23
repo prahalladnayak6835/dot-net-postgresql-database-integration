@@ -12,7 +12,7 @@ using Microsoft.VisualBasic;
 namespace UserCrudApi.Controllers
 {
     [ApiController]
-    [Route("api/users")]
+    [Route("api/v1")]
     public class UsersController : ControllerBase
     {
         private readonly UserContext _context;
@@ -26,7 +26,7 @@ namespace UserCrudApi.Controllers
         }
 
         // GET: api/users
-        [HttpGet]
+        [HttpGet("getAllUsers")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             try
@@ -46,7 +46,7 @@ namespace UserCrudApi.Controllers
         }
 
         // GET: api/users/5
-        [HttpGet("{id}")]
+        [HttpGet("getUserById/{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
             try
@@ -79,7 +79,7 @@ namespace UserCrudApi.Controllers
         }
 
         // POST api/users
-        [HttpPost]
+        [HttpPost("createUser")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
             try
@@ -103,7 +103,7 @@ namespace UserCrudApi.Controllers
         }
 
         // PUT api/users/2
-        [HttpPut("{id}")]
+        [HttpPut("updateUser/{id}")]
         public ActionResult<User> Put(int id, [FromBody] User user)
         {
             try
@@ -134,7 +134,7 @@ namespace UserCrudApi.Controllers
         }
 
         // DELETE api/users/2
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteUser/{id}")]
         public ActionResult<string> Delete(int id)
         {
             try
@@ -161,11 +161,6 @@ namespace UserCrudApi.Controllers
             }
         }
 
-        // Dummy endpoint to test the endpoint url
-        [HttpGet("test")]
-        public string Test()
-        {
-            return "Hello World!";
-        }
+
     }
 }
