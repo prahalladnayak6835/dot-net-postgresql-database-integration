@@ -32,14 +32,14 @@ namespace UserCrudApi.Controllers
             try
             {
                 // Log information about the operation
-                Logger.LogInformation($"{time}: Fetching all users.");
+                Logger.LogInformation(DateTime.Now+": Fetching all users.");
                 // Return all users from the database
                 return await _context.Users.ToListAsync();
             }
             catch (Exception ex)
             {
                 // Log an error if an exception occurs
-                Logger.LogError($"{time}: An error occurred while fetching users: {ex.Message}");
+                Logger.LogError(DateTime.Now+ $": An error occurred while fetching users: {ex.Message}");
                 // Return a 500 Internal Server Error response with a generic error message
                 return StatusCode(500, "An error occurred while fetching users.");
             }
@@ -52,27 +52,27 @@ namespace UserCrudApi.Controllers
             try
             {
                 // Log information about the operation
-                Logger.LogInformation($"{time}: Fetching user with ID: {id}");
+                Logger.LogInformation(DateTime.Now+$": Fetching user with ID: {id}");
                 // Find and return the user with the specified ID
                 var user = await _context.Users.FindAsync(id);
 
                 if (user == null)
                 {
                     // Log a message if the user is not found
-                    Logger.LogInformation($"{time}: User with ID: {id} not found.");
+                    Logger.LogInformation(DateTime.Now+$": User with ID: {id} not found.");
                     // Return a 404 Not Found response
                     return NotFound();
                 }
 
                 // Log a message if the user is found
-                Logger.LogInformation($"{time}: User with ID: {id} found.");
+                Logger.LogInformation(DateTime.Now+$": User with ID: {id} found.");
                 // Return the user
                 return user;
             }
             catch (Exception ex)
             {
                 // Log an error if an exception occurs
-                Logger.LogError($"{time}: An error occurred while fetching user with ID {id}: {ex.Message}");
+                Logger.LogError(DateTime.Now+$": An error occurred while fetching user with ID {id}: {ex.Message}");
                 // Return a 500 Internal Server Error response with a generic error message
                 return StatusCode(500, $"An error occurred while fetching user with ID {id}.");
             }
@@ -89,14 +89,14 @@ namespace UserCrudApi.Controllers
                 await _context.SaveChangesAsync();
 
                 // Log a message indicating success
-                Logger.LogInformation($"{time}: User has been created.");
+                Logger.LogInformation(DateTime.Now+$": User has been created.");
                 // Return a 201 Created response with the created user
                 return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
             }
             catch (Exception ex)
             {
                 // Log an error if an exception occurs
-                Logger.LogError($"{time}: An error occurred while creating user: {ex.Message}");
+                Logger.LogError(DateTime.Now+$": An error occurred while creating user: {ex.Message}");
                 // Return a 500 Internal Server Error response with a generic error message
                 return StatusCode(500, "An error occurred while creating user.");
             }
@@ -127,7 +127,7 @@ namespace UserCrudApi.Controllers
             catch (Exception ex)
             {
                 // Log an error if an exception occurs
-                Logger.LogError($"{time}: An error occurred while updating user with ID {id}: {ex.Message}");
+                Logger.LogError(DateTime.Now+$": An error occurred while updating user with ID {id}: {ex.Message}");
                 // Return a 500 Internal Server Error response with a generic error message
                 return StatusCode(500, $"An error occurred while updating user with ID {id}.");
             }
@@ -147,7 +147,7 @@ namespace UserCrudApi.Controllers
                     _context.Users.Remove(user);
                     _context.SaveChanges();
                     // Log a message indicating success
-                    Logger.LogInformation($"{time}: User has been deleted.");
+                    Logger.LogInformation(DateTime.Now+$": User has been deleted.");
                 }
                 // Return a success message
                 return "User has been deleted.";
@@ -155,7 +155,7 @@ namespace UserCrudApi.Controllers
             catch (Exception ex)
             {
                 // Log an error if an exception occurs
-                Logger.LogError($"{time}: An error occurred while deleting user with ID {id}: {ex.Message}");
+                Logger.LogError(DateTime.Now+$": An error occurred while deleting user with ID {id}: {ex.Message}");
                 // Return a 500 Internal Server Error response with a generic error message
                 return StatusCode(500, $"An error occurred while deleting user with ID {id}.");
             }
